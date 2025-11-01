@@ -34,10 +34,9 @@ export default function SidebarInput({ onSubmit, disabled = false }: SidebarInpu
   ];
 
   const models = [
-    { id: "openrouter/minimax-m2:free", name: "Minimax M2" },
+    { id: "openrouter/minimax-m2:free", name: "Claude Sonnet" },
     { id: "openai/gpt-5", name: "GPT-5" },
     { id: "moonshotai/kimi-k2-instruct-0905", name: "Kimi K2 0905 on Groq" },
-    { id: "anthropic/claude-sonnet-4-20250514", name: "Sonnet 4" },
     { id: "google/gemini-2.0-flash-exp", name: "Gemini 2.0" },
   ];
 
