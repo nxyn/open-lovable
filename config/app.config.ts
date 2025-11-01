@@ -55,6 +55,7 @@ export const appConfig = {
     
     // Available models
     availableModels: [
+      'openrouter/minimax-m2:free',
       'openai/gpt-5',
       'moonshotai/kimi-k2-instruct-0905',
       'anthropic/claude-sonnet-4-20250514',
