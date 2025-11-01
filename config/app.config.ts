@@ -64,6 +64,7 @@ export const appConfig = {
     
     // Model display names
     modelDisplayNames: {
+      'openrouter/minimax-m2:free': 'Minimax M2',
       'openai/gpt-5': 'GPT-5',
       'moonshotai/kimi-k2-instruct-0905': 'Kimi K2 (Groq)',
       'anthropic/claude-sonnet-4-20250514': 'Sonnet 4',
