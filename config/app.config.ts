@@ -63,10 +63,9 @@ export const appConfig = {
     
     // Model display names
     modelDisplayNames: {
-      'openrouter/minimax-m2:free': 'Minimax M2',
+      'openrouter/minimax-m2:free': 'Claude Sonnet',
       'openai/gpt-5': 'GPT-5',
       'moonshotai/kimi-k2-instruct-0905': 'Kimi K2 (Groq)',
-      'anthropic/claude-sonnet-4-20250514': 'Sonnet 4',
       'google/gemini-2.0-flash-exp': 'Gemini 2.0 Flash (Experimental)'
     } as Record<string, string>,
     
