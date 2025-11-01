@@ -1222,10 +1222,12 @@ MORPH FAST APPLY MODE (EDIT-ONLY):
         const isGoogle = model.startsWith('google/');
         const isOpenAI = model.startsWith('openai/');
         const isKimiGroq = model === 'moonshotai/kimi-k2-instruct-0905';
-        const modelProvider = isAnthropic ? anthropic : 
-                              (isOpenAI ? openai : 
-                              (isGoogle ? googleGenerativeAI : 
-                              (isKimiGroq ? groq : groq)));
+        const isOpenRouter = model.startsWith('openrouter/');
+        const modelProvider = isOpenRouter ? openrouter :
+                              (isAnthropic ? anthropic :
+                              (isOpenAI ? openai :
+                              (isGoogle ? googleGenerativeAI :
+                              (isKimiGroq ? groq : groq))));
         
         // Fix model name transformation for different providers
         let actualModel: string;
