@@ -1233,6 +1233,10 @@ MORPH FAST APPLY MODE (EDIT-ONLY):
         let actualModel: string;
         if (isAnthropic) {
           actualModel = model.replace('anthropic/', '');
+        } else if (isOpenRouter) {
+          // OpenRouter - strip the openrouter/ prefix
+          // The API expects just "minimax/minimax-m2:free"
+          actualModel = model.replace('openrouter/', '');
         } else if (isOpenAI) {
           actualModel = model.replace('openai/', '');
         } else if (isKimiGroq) {
