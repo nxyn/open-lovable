@@ -110,7 +110,9 @@ export async function POST(request: NextRequest) {
     
     // Select the appropriate AI model based on the request
     let aiModel;
-    if (model.startsWith('anthropic/')) {
+    if (model.startsWith('openrouter/')) {
+      aiModel = openrouter(model.replace('openrouter/', ''));
+    } else if (model.startsWith('anthropic/')) {
       aiModel = anthropic(model.replace('anthropic/', ''));
     } else if (model.startsWith('openai/')) {
       if (model.includes('gpt-oss')) {
