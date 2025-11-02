@@ -284,13 +284,7 @@ export default function HomePage() {
             {/* Hero Input Component */}
             <div className="max-w-552 mx-auto z-[11] lg:z-[2]">
               <div className="rounded-20 -mt-30 lg:-mt-30">
-                <div
-                  className="bg-white rounded-20"
-                  style={{
-                    boxShadow:
-                      "0px 0px 44px 0px rgba(0, 0, 0, 0.02), 0px 88px 56px -20px rgba(0, 0, 0, 0.03), 0px 56px 56px -20px rgba(0, 0, 0, 0.02), 0px 32px 32px -20px rgba(0, 0, 0, 0.03), 0px 16px 24px -12px rgba(0, 0, 0, 0.03), 0px 0px 0px 1px rgba(0, 0, 0, 0.05), 0px 0px 0px 10px #F9F9F9",
-                  }}
-                >
+                <div className="chloro-card rounded-20 chloro-border-glow">
 
                 <div className="p-16 flex gap-12 items-center w-full relative bg-white rounded-20">
                   {/* Show different UI when search results are displayed */}
