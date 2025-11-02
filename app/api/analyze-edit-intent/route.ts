@@ -111,11 +111,11 @@ export async function POST(request: NextRequest) {
     // Use OpenRouter for all models now
     const isOpenRouter = model.startsWith('openrouter/');
     let aiModel = openrouter;
-    let actualModel = model.replace('openrouter/', 'minimax/');
+    let actualModel = model.replace('openrouter/', 'minimax/') + ':free';
 
-    // Default to minimax-m2 if no specific model
+    // Default to minimax-m2:free if no specific model
     if (!isOpenRouter) {
-      actualModel = 'minimax/minimax-m2';
+      actualModel = 'minimax/minimax-m2:free';
     }
     
     console.log('[analyze-edit-intent] Using OpenRouter model:', actualModel);
