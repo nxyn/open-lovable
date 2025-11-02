@@ -286,7 +286,7 @@ export default function HomePage() {
               <div className="rounded-20 -mt-30 lg:-mt-30">
                 <div className="chloro-card rounded-20 chloro-border-glow">
 
-                <div className="p-16 flex gap-12 items-center w-full relative bg-white rounded-20">
+                <div className="p-16 flex gap-12 items-center w-full relative chloro-bg-blur rounded-20">
                   {/* Show different UI when search results are displayed */}
                   {hasSearched && searchResults.length > 0 && !isFadingOut ? (
                     <>
