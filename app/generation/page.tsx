@@ -461,6 +461,22 @@ function AISandboxPage() {
               }
             } catch (e) {
               console.error('Failed to parse SSE data:', e);
+              console.error('Problematic line:', line);
+
+              // Try to extract error message from non-JSON data
+              const dataContent = line.slice(6);
+              if (dataContent && dataContent.trim().startsWith('"An error')) {
+                // Extract error message from error response
+                const errorMatch = dataContent.match(/"([^"]+)"/);
+                if (errorMatch) {
+                  addChatMessage(errorMatch[1], 'command', { commandType: 'error' });
+                } else {
+                  addChatMessage('Failed to process server response', 'command', { commandType: 'error' });
+                }
+              } else if (dataContent && dataContent.trim()) {
+                // Show the raw content as an error
+                addChatMessage(dataContent.trim(), 'command', { commandType: 'error' });
+              }
             }
           }
         }
