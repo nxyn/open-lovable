@@ -2057,7 +2057,26 @@ Tip: I automatically detect and install npm packages from your code imports (lik
                   throw new Error(data.error);
                 }
               } catch (e) {
-                console.error('Failed to parse SSE data:', e);
+                console.error('Failed to parse SSE data in generation:', e);
+                console.error('Problematic line:', line);
+
+                // Try to extract error message from non-JSON data
+                const dataContent = line.slice(6);
+                if (dataContent && dataContent.trim().startsWith('"An error')) {
+                  // Extract error message from error response
+                  const errorMatch = dataContent.match(/"([^"]+)"/);
+                  if (errorMatch) {
+                    addChatMessage(`Generation error: ${errorMatch[1]}`, 'system');
+                    setGenerationProgress(prev => ({ ...prev, isGenerating: false, status: 'Error occurred' }));
+                  } else {
+                    addChatMessage('Failed to process server response during generation', 'system');
+                    setGenerationProgress(prev => ({ ...prev, isGenerating: false, status: 'Error occurred' }));
+                  }
+                } else if (dataContent && dataContent.trim()) {
+                  // Show the raw content as an error
+                  addChatMessage(`Generation error: ${dataContent.trim()}`, 'system');
+                  setGenerationProgress(prev => ({ ...prev, isGenerating: false, status: 'Error occurred' }));
+                }
               }
             }
           }
