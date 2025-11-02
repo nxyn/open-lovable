@@ -3,6 +3,7 @@ import { createGroq } from '@ai-sdk/groq';
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createOpenAI } from '@ai-sdk/openai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { generateObject } from 'ai';
 import { z } from 'zod';
 // import type { FileManifest } from '@/types/file-manifest'; // Type is used implicitly through manifest parameter
@@ -29,6 +30,10 @@ const openai = createOpenAI({
 const googleGenerativeAI = createGoogleGenerativeAI({
   apiKey: process.env.AI_GATEWAY_API_KEY ?? process.env.GEMINI_API_KEY,
   baseURL: isUsingAIGateway ? aiGatewayBaseURL : undefined,
+});
+
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY || 'sk-or-v1-your-api-key-here',
 });
 
 // Schema for the AI's search plan - not file selection!
@@ -103,28 +108,21 @@ export async function POST(request: NextRequest) {
     console.log('[analyze-edit-intent] Analyzing prompt:', prompt);
     console.log('[analyze-edit-intent] File summary preview:', fileSummary.split('\n').slice(0, 5).join('\n'));
     
-    // Select the appropriate AI model based on the request
-    let aiModel;
-    if (model.startsWith('anthropic/')) {
-      aiModel = anthropic(model.replace('anthropic/', ''));
-    } else if (model.startsWith('openai/')) {
-      if (model.includes('gpt-oss')) {
-        aiModel = groq(model);
-      } else {
-        aiModel = openai(model.replace('openai/', ''));
-      }
-    } else if (model.startsWith('google/')) {
-      aiModel = googleGenerativeAI(model.replace('google/', ''));
-    } else {
-      // Default to groq if model format is unclear
-      aiModel = groq(model);
+    // Use OpenRouter for all models now
+    const isOpenRouter = model.startsWith('openrouter/');
+    let aiModel = openrouter;
+    let actualModel = model.replace('openrouter/', 'minimax/') + ':free';
+
+    // Default to minimax-m2:free if no specific model
+    if (!isOpenRouter) {
+      actualModel = 'minimax/minimax-m2:free';
     }
     
-    console.log('[analyze-edit-intent] Using AI model:', model);
-    
+    console.log('[analyze-edit-intent] Using OpenRouter model:', actualModel);
+
     // Use AI to create a search plan
     const result = await generateObject({
-      model: aiModel,
+      model: openrouter(actualModel),
       schema: searchPlanSchema,
       messages: [
         {
