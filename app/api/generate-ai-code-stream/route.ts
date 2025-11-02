@@ -45,6 +45,10 @@ const openai = createOpenAI({
   baseURL: isUsingAIGateway ? aiGatewayBaseURL : process.env.OPENAI_BASE_URL,
 });
 
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY || 'sk-or-v1-your-api-key-here',
+});
+
 // Helper function to analyze user preferences from conversation history
 function analyzeUserPreferences(messages: ConversationMessage[]): {
   commonPatterns: string[];
