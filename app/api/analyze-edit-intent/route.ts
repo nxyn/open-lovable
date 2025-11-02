@@ -118,11 +118,11 @@ export async function POST(request: NextRequest) {
       actualModel = 'minimax/minimax-m2';
     }
     
-    console.log('[analyze-edit-intent] Using AI model:', model);
-    
+    console.log('[analyze-edit-intent] Using OpenRouter model:', actualModel);
+
     // Use AI to create a search plan
     const result = await generateObject({
-      model: aiModel,
+      model: openrouter(actualModel),
       schema: searchPlanSchema,
       messages: [
         {
