@@ -26,36 +26,95 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    /* Chloro Code - Dark AMOLED Theme */
+    --background: 15 15% 20%;
+    --foreground: 240 10% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 10 15% 25%;
+    --card-foreground: 240 10% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 15 15% 25%;
+    --popover-foreground: 240 10% 95%;
 
-    --primary: 240 5.9% 10%;
+    --primary: 280 100% 73%; /* chloro-purple */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 260 80% 60%; /* darker purple */
+    --secondary-foreground: 240 10% 95%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 230 15% 45%; /* subtle purple */
+    --muted-foreground: 200 5% 80%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 275 95% 75%; /* chloro-purple-glow */
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 20 80% 50%; /* softer red for dark theme */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --border: 230 15% 45%;
+    --input: 230 15% 45%;
+    --ring: 280 100% 73% / 20%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom Chloro Code colors */
+    --chloro-purple: #a855f7;
+    --chloro-purple-glow: #c77dff;
+    --chloro-neon: #e12eff;
+    --chloro-deep-purple: #6b46c1;
+    --chloro-electric: #bf40ff;
+    --chloro-void: #1a1a2e;
+    --chloro-midnight: #0f0f23;
+
+    /* Animated background variables */
+    --bg-gradient-start: #0a0a0f;
+    --bg-gradient-end: #1a1a2e;
+    --accent-glow: rgba(168, 85, 247, 0.3);
+    --neon-glow: rgba(225, 46, 255, 0.6);
+    --shimmer-gradient: linear-gradient(90deg, rgba(168, 85, 247, 0.1), rgba(225, 46, 255, 0.3), rgba(168, 85, 247, 0.1));
+
+    /* Animation timing */
+    --animation-slow: 3s;
+    --animation-medium: 2s;
+    --animation-fast: 0.5s;
+
+    /* Glow effects */
+    --glow-small: 0 0 10px rgba(168, 85, 247, 0.5);
+    --glow-medium: 0 0 20px rgba(168, 85, 247, 0.4);
+    --glow-large: 0 0 30px rgba(168, 85, 247, 0.3);
+    --glow-intense: 0 0 40px rgba(225, 46, 255, 0.5);
+
+    /* Pixel-perfect black for AMOLED */
+    --true-black: #000000;
+    --almost-black: #0a0a0a;
+    --dark-purple: #1e1e3a;
   }
+
+  .dark {
+    /* Dark mode override - even darker for true AMOLED */
+    --background: 10 10% 15%;
+    --foreground: 240 10% 98%;
+
+    --card: 5 15% 20%;
+    --card-foreground: 240 10% 98%;
+
+    --primary: 285 100% 75%; /* brighter purple in dark mode */
+    --primary-foreground: 0 0% 100%;
+
+    --muted: 225 10% 40%;
+    --muted-foreground: 200 5% 80%;
+
+    --accent: 290 100% 85%; /* more vibrant accent in dark */
+    --accent-foreground: 0 0% 100%;
+
+    --bg-gradient-start: #050510;
+    --bg-gradient-end: #0f0f23;
+
+    --accent-glow: rgba(168, 85, 247, 0.5);
+    --neon-glow: rgba(225, 46, 255, 0.8);
+    --shimmer-gradient: linear-gradient(90deg, rgba(168, 85, 247, 0.2), rgba(225, 46, 255, 0.5), rgba(168, 85, 247, 0.2));
+  }
+}
 
   /* Temporarily disable dark mode until we migrate to semantic colors */
   /* .dark {
