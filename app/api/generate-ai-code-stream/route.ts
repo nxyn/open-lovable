@@ -1221,23 +1221,16 @@ MORPH FAST APPLY MODE (EDIT-ONLY):
         const isOpenRouter = model.startsWith('openrouter/');
         const modelProvider = isOpenRouter ? openrouter : openrouter; // Always use OpenRouter now
         
-        // Fix model name transformation for different providers
+        // Fix model name transformation for OpenRouter
         let actualModel: string;
-        if (isAnthropic) {
-          actualModel = model.replace('anthropic/', '');
-        } else if (isOpenAI) {
-          actualModel = model.replace('openai/', '');
-        } else if (isKimiGroq) {
-          // Kimi on Groq - use full model string
-          actualModel = 'moonshotai/kimi-k2-instruct-0905';
-        } else if (isGoogle) {
-          // Google uses specific model names - convert our naming to theirs  
-          actualModel = model.replace('google/', '');
+        if (isOpenRouter) {
+          // Convert our internal naming to OpenRouter's format
+          actualModel = model.replace('openrouter/', 'minimax/');
         } else {
-          actualModel = model;
+          actualModel = 'minimax/minimax-m2'; // Default fallback
         }
 
-        console.log(`[generate-ai-code-stream] Using provider: ${isAnthropic ? 'Anthropic' : isGoogle ? 'Google' : isOpenAI ? 'OpenAI' : 'Groq'}, model: ${actualModel}`);
+        console.log(`[generate-ai-code-stream] Using provider: OpenRouter, model: ${actualModel}`);
         console.log(`[generate-ai-code-stream] AI Gateway enabled: ${isUsingAIGateway}`);
         console.log(`[generate-ai-code-stream] Model string: ${model}`);
 
