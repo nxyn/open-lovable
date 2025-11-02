@@ -44,8 +44,10 @@ const openai = createOpenAI({
   baseURL: isUsingAIGateway ? aiGatewayBaseURL : process.env.OPENAI_BASE_URL,
 });
 
-const openrouter = createOpenRouter({
+// Use OpenAI provider with OpenRouter's OpenAI-compatible endpoint
+const openrouter = createOpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || 'sk-or-v1-your-api-key-here',
+  baseURL: 'https://openrouter.ai/api/v1'
 });
 
 // Helper function to analyze user preferences from conversation history
