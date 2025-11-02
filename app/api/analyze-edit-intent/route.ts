@@ -3,7 +3,6 @@ import { createGroq } from '@ai-sdk/groq';
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createOpenAI } from '@ai-sdk/openai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { generateObject } from 'ai';
 import { z } from 'zod';
 // import type { FileManifest } from '@/types/file-manifest'; // Type is used implicitly through manifest parameter
@@ -32,8 +31,10 @@ const googleGenerativeAI = createGoogleGenerativeAI({
   baseURL: isUsingAIGateway ? aiGatewayBaseURL : undefined,
 });
 
-const openrouter = createOpenRouter({
+// Use OpenAI provider with OpenRouter's OpenAI-compatible endpoint
+const openrouter = createOpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || 'sk-or-v1-your-api-key-here',
+  baseURL: 'https://openrouter.ai/api/v1'
 });
 
 // Schema for the AI's search plan - not file selection!
