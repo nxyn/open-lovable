@@ -1224,10 +1224,10 @@ MORPH FAST APPLY MODE (EDIT-ONLY):
         // Fix model name transformation for OpenRouter
         let actualModel: string;
         if (isOpenRouter) {
-          // Convert our internal naming to OpenRouter's format
-          actualModel = model.replace('openrouter/', 'minimax/');
+          // Convert our internal naming to OpenRouter's format with free tier
+          actualModel = model.replace('openrouter/', 'minimax/') + ':free';
         } else {
-          actualModel = 'minimax/minimax-m2'; // Default fallback
+          actualModel = 'minimax/minimax-m2:free'; // Default fallback
         }
 
         console.log(`[generate-ai-code-stream] Using provider: OpenRouter, model: ${actualModel}`);
