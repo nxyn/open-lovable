@@ -108,21 +108,14 @@ export async function POST(request: NextRequest) {
     console.log('[analyze-edit-intent] Analyzing prompt:', prompt);
     console.log('[analyze-edit-intent] File summary preview:', fileSummary.split('\n').slice(0, 5).join('\n'));
     
-    // Select the appropriate AI model based on the request
-    let aiModel;
-    if (model.startsWith('anthropic/')) {
-      aiModel = anthropic(model.replace('anthropic/', ''));
-    } else if (model.startsWith('openai/')) {
-      if (model.includes('gpt-oss')) {
-        aiModel = groq(model);
-      } else {
-        aiModel = openai(model.replace('openai/', ''));
-      }
-    } else if (model.startsWith('google/')) {
-      aiModel = googleGenerativeAI(model.replace('google/', ''));
-    } else {
-      // Default to groq if model format is unclear
-      aiModel = groq(model);
+    // Use OpenRouter for all models now
+    const isOpenRouter = model.startsWith('openrouter/');
+    let aiModel = openrouter;
+    let actualModel = model.replace('openrouter/', 'minimax/');
+
+    // Default to minimax-m2 if no specific model
+    if (!isOpenRouter) {
+      actualModel = 'minimax/minimax-m2';
     }
     
     console.log('[analyze-edit-intent] Using AI model:', model);
