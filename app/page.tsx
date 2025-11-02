@@ -243,8 +243,24 @@ export default function HomePage() {
             <div className="relative container px-16">
               <HomeHeroBadge />
               <HomeHeroTitle />
-              <p className="text-center text-body-large">
-                Re-imagine any website, in seconds.
+              <p className="text-center text-body-large text-muted-foreground chloro-particles">
+                <span>AI-powered code generation with stunning dark UI design.</span>
+
+                {/* Animated floating particles */}
+                <div className="chloro-particles">
+                  <div className="chloro-particle" style={{ left: '10%', animationDelay: '0s' }} />
+                  <div className="chloro-particle" style={{ left: '25%', animationDelay: '-2s' }} />
+                  <div className="chloro-particle" style={{ left: '40%', animationDelay: '-4s' }} />
+                  <div className="chloro-particle" style={{ left: '55%', animationDelay: '-6s' }} />
+                  <div className="chloro-particle" style={{ left: '70%', animationDelay: '-1s' }} />
+                  <div className="chloro-particle" style={{ left: '85%', animationDelay: '-3s' }} />
+                  <div className="chloro-particle" style={{ left: '15%', animationDelay: '-5s' }} />
+                  <div className="chloro-particle" style={{ left: '30%', animationDelay: '-7s' }} />
+                  <div className="chloro-particle" style={{ left: '45%', animationDelay: '-2.5s' }} />
+                  <div className="chloro-particle" style={{ left: '60%', animationDelay: '-4.5s' }} />
+                  <div className="chloro-particle" style={{ left: '75%', animationDelay: '-6.5s' }} />
+                  <div className="chloro-particle" style={{ left: '90%', animationDelay: '-1.5s' }} />
+                </div>
               </p>
               <Link
                 className="bg-black-alpha-4 hover:bg-black-alpha-6 rounded-6 px-8 lg:px-6 text-label-large h-30 lg:h-24 block mt-8 mx-auto w-max gap-4 transition-all"
