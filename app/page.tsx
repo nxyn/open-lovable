@@ -368,7 +368,7 @@ export default function HomePage() {
                         </svg>
                       )}
                       <input
-                        className="flex-1 bg-transparent text-body-input text-accent-black placeholder:text-black-alpha-48 focus:outline-none focus:ring-0 focus:border-transparent"
+                        className="flex-1 chloro-input text-body-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 focus:border-transparent chloro-focus-outline"
                         placeholder="Enter URL or search term..."
                         type="text"
                         value={url}
