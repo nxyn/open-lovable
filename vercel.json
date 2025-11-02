@@ -1,66 +1,10 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "installCommand": "npm install",
   "framework": "nextjs",
+  "buildCommand": "npm run build",
   "regions": ["iad1"],
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
     }
-  },
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/scrape-website",
-      "destination": "/api/scrape-website"
-    },
-    {
-      "source": "/api/scrape-url-enhanced",
-      "destination": "/api/scrape-url-enhanced"
-    },
-    {
-      "source": "/api/search",
-      "destination": "/api/search"
-    }
-  ]
+  }
 }
