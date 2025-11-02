@@ -199,7 +199,7 @@ export default function HomePage() {
 
   return (
     <HeaderProvider>
-      <div className="min-h-screen bg-background-base">
+      <div className="min-h-screen chloro-bg chloro-scrollbar">
         {/* Header/Navigation Section */}
         <HeaderDropdownWrapper />
 
