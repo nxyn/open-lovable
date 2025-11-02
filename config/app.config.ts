@@ -67,7 +67,7 @@ export const appConfig = {
     modelApiConfig: {
       'openrouter/minimax-m2': {
         provider: 'openrouter',
-        model: 'minimax/minimax-m2'
+        model: 'minimax/minimax-m2:free'
       }
     },
     
