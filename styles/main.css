@@ -339,3 +339,259 @@ input[type="text"]:focus-visible {
   box-shadow: none !important;
   border-color: inherit !important;
 }
+
+/* Chloro Code - Animated Background and Glow Effects */
+
+/* Main animated background */
+.chloro-bg {
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--chloro-void) 50%, var(--bg-gradient-end) 100%);
+  background-size: 400% 400%;
+  animation: chloro-bg-shift var(--animation-slow) ease-in-out infinite;
+  position: relative;
+}
+
+.chloro-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--shimmer-gradient);
+  background-size: 200% 200%;
+  animation: chloro-shimmer var(--animation-medium) linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glow effects for interactive elements */
+.chloro-glow {
+  box-shadow: var(--glow-small);
+  transition: box-shadow var(--animation-fast) ease-in-out;
+}
+
+.chloro-glow:hover {
+  box-shadow: var(--glow-medium);
+}
+
+.chloro-glow:focus {
+  box-shadow: var(--glow-intense);
+  outline: 2px solid var(--chloro-purple-glow);
+  outline-offset: 2px;
+}
+
+/* Text glow effect */
+.chloro-text-glow {
+  text-shadow: 0 0 10px currentColor;
+  color: var(--chloro-purple-glow);
+}
+
+/* Border glow */
+.chloro-border-glow {
+  border: 1px solid var(--chloro-purple);
+  box-shadow:
+    0 0 5px var(--chloro-purple),
+    inset 0 0 5px rgba(168, 85, 247, 0.1);
+}
+
+/* Animated pulse glow */
+.chloro-pulse-glow {
+  animation: chloro-pulse-glow var(--animation-medium) ease-in-out infinite;
+}
+
+/* Floating particles background */
+.chloro-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.chloro-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--chloro-purple-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--chloro-purple-glow);
+  animation: chloro-float 6s ease-in-out infinite;
+}
+
+.chloro-particle:nth-child(odd) {
+  animation-delay: -2s;
+  animation-duration: 8s;
+}
+
+.chloro-particle:nth-child(3n) {
+  animation-delay: -4s;
+  animation-duration: 10s;
+  background: var(--chloro-neon);
+  box-shadow: 0 0 8px var(--chloro-neon);
+}
+
+/* Enhanced input styles for dark theme */
+.chloro-input {
+  background: var(--chloro-void);
+  border: 1px solid var(--chloro-deep-purple);
+  color: var(--foreground);
+  transition: all var(--animation-fast) ease-in-out;
+}
+
+.chloro-input:focus,
+.chloro-input:focus-visible {
+  border-color: var(--chloro-purple);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+  outline: none;
+}
+
+.chloro-input::placeholder {
+  color: rgba(240, 10%, 95%, 0.6);
+}
+
+/* Button enhancements */
+.chloro-button {
+  background: linear-gradient(135deg, var(--chloro-purple), var(--chloro-deep-purple));
+  border: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--animation-fast) ease-in-out;
+}
+
+.chloro-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--animation-medium) ease-in-out;
+}
+
+.chloro-button:hover::before {
+  left: 100%;
+}
+
+.chloro-button:hover {
+  background: linear-gradient(135deg, var(--chloro-purple-glow), var(--chloro-electric));
+  box-shadow: var(--glow-medium);
+  transform: translateY(-1px);
+}
+
+/* Card enhancements */
+.chloro-card {
+  background: var(--chloro-obsidian);
+  border: 1px solid rgba(168, 85, 247, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.chloro-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--chloro-purple-glow), transparent);
+  opacity: 0;
+  transition: opacity var(--animation-fast) ease-in-out;
+}
+
+.chloro-card:hover::before {
+  opacity: 1;
+}
+
+.chloro-card:hover {
+  border-color: var(--chloro-purple);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+/* Animations */
+@keyframes chloro-bg-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes chloro-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes chloro-pulse-glow {
+  0%, 100% {
+    box-shadow: var(--glow-small);
+  }
+  50% {
+    box-shadow: var(--glow-medium);
+  }
+}
+
+@keyframes chloro-float {
+  0%, 100% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Scrollbar styling */
+.chloro-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chloro-scrollbar::-webkit-scrollbar-track {
+  background: var(--chloro-void);
+}
+
+.chloro-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--chloro-deep-purple);
+  border-radius: 4px;
+  transition: background var(--animation-fast) ease-in-out;
+}
+
+.chloro-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--chloro-purple);
+}
+
+/* Focus states */
+.chloro-focus-outline:focus-visible {
+  outline: 2px solid var(--chloro-purple-glow);
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.chloro-gradient-text {
+  background: linear-gradient(135deg, var(--chloro-purple), var(--chloro-electric));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chloro-bg-blur {
+  backdrop-filter: blur(12px);
+  background: rgba(15, 15, 35, 0.8);
+}
