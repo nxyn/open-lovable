@@ -32,6 +32,10 @@ const googleGenerativeAI = createGoogleGenerativeAI({
   baseURL: isUsingAIGateway ? aiGatewayBaseURL : undefined,
 });
 
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY || 'sk-or-v1-your-api-key-here',
+});
+
 // Schema for the AI's search plan - not file selection!
 const searchPlanSchema = z.object({
   editType: z.enum([
