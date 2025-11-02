@@ -32,8 +32,10 @@ const googleGenerativeAI = createGoogleGenerativeAI({
   baseURL: isUsingAIGateway ? aiGatewayBaseURL : undefined,
 });
 
-const openrouter = createOpenRouter({
+// Use OpenAI provider with OpenRouter's OpenAI-compatible endpoint
+const openrouter = createOpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || 'sk-or-v1-your-api-key-here',
+  baseURL: 'https://openrouter.ai/api/v1'
 });
 
 // Schema for the AI's search plan - not file selection!
