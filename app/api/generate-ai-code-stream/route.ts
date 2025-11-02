@@ -1309,14 +1309,8 @@ It's better to have 3 complete files than 10 incomplete files.`
           streamOptions.temperature = 0.7;
         }
         
-        // Add reasoning effort for GPT-5 models
-        if (isOpenAI) {
-          streamOptions.experimental_providerMetadata = {
-            openai: {
-              reasoningEffort: 'high'
-            }
-          };
-        }
+        // Note: MiniMax M2 doesn't need special reasoning effort configuration
+        // If using GPT-5 models in the future, you can add reasoning configuration here
         
         let result;
         let retryCount = 0;
