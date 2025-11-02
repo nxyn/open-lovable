@@ -772,8 +772,27 @@ Tip: I automatically detect and install npm packages from your code imports (lik
                   }
                   break;
               }
-            } catch {
-              // Ignore parse errors
+            } catch (e) {
+              console.error('Failed to parse SSE data in code application:', e);
+              console.error('Problematic line:', line);
+
+              // Try to extract error message from non-JSON data
+              const dataContent = line.slice(6);
+              if (dataContent && dataContent.trim().startsWith('"An error')) {
+                // Extract error message from error response
+                const errorMatch = dataContent.match(/"([^"]+)"/);
+                if (errorMatch) {
+                  addChatMessage(errorMatch[1], 'system');
+                  setLoading(false);
+                } else {
+                  addChatMessage('Failed to process server response during code application', 'system');
+                  setLoading(false);
+                }
+              } else if (dataContent && dataContent.trim()) {
+                // Show the raw content as an error
+                addChatMessage(dataContent.trim(), 'system');
+                setLoading(false);
+              }
             }
           }
         }
