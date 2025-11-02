@@ -44,8 +44,8 @@ export default function HeaderBrandKit() {
           }
         }}
       >
-        <FirecrawlIcon className="size-28 -top-2 relative" />
-        <Logo />
+        <ChloroLogo />
+        <span className="ml-2 text-xl font-bold chloro-gradient-text">Chloro Code</span>
       </Link>
 
       <AnimatePresence initial={false} mode="popLayout">
