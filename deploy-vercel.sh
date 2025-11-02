@@ -11,11 +11,17 @@ if ! command -v vercel &> /dev/null; then
     npm install -g vercel
 fi
 
-# Verify Firecrawl API key
+# Verify API keys
 if [ -z "$FIRECRAWL_API_KEY" ]; then
     echo "⚠️  FIRECRAWL_API_KEY not found in environment"
     echo "Please set it in Vercel dashboard or run:"
     echo "export FIRECRAWL_API_KEY=fc-5cb895a3c09b4b91837eb3366817ee3d"
+fi
+
+if [ -z "$OPENROUTER_API_KEY" ]; then
+    echo "⚠️  OPENROUTER_API_KEY not found in environment"
+    echo "Please set it in Vercel dashboard or run:"
+    echo "export OPENROUTER_API_KEY=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"
 fi
 
 # Install dependencies
